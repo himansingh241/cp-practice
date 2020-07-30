@@ -1,0 +1,82 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+#define inf 1e18
+#define deb(x) cout << #x << "=" << x << endl
+#define deb2(x, y) cout << #x << "=" << x << "," << #y << "=" << y << endl
+#define sp(x, y) fixed << setprecision(y) << x;
+#define em emplace_back
+#define all(x) x.begin(), x.end()
+#define sortall(x) sort(all(x))
+#define PI 3.1415926535897932384626
+#define nl '\n'
+
+typedef pair<int, int> pii;
+typedef pair<ll, ll> pl;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef vector<pii> vpii;
+typedef vector<pl> vpl;
+typedef vector<vi> vvi;
+typedef vector<vl> vvl;
+
+const int maxn = 1e6;
+const int mod = 1e9 + 7;
+
+void solve() {
+  string s, r;
+  cin >> s >> r;
+  int n = s.size();
+  int m = r.size();
+  if (n == m) {
+    int a = 0, b = 0;
+    int cnt = 0;
+    for (int i =0; i < n; i++) {
+      char mis;
+      if (s[i] != r[i]) {
+        cnt++;
+        if (cnt == 1) {
+          a = i;
+        }
+        else if (cnt == 2) {
+          b = i;
+        }
+        mis = s[i];
+      }
+      if (cnt > 2) {
+        cout << "NO\n";
+        return;
+      }
+    }
+    if (cnt == 0) {
+      cout << "YES\n";
+    }
+    else if (cnt == 2) {
+      swap(s[a], s[b]);
+      if (s == r) {
+        cout << "YES\n";
+      }
+      else {
+        cout << "NO\n";
+      }
+    }
+    else {
+      cout << "NO\n";
+    }
+  }
+  else {
+    cout << "NO\n";
+  }
+}
+
+int main() {
+  ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+  ll test = 1;
+  /* cin >> test; */
+  while (test--) {
+    solve();
+  }
+  return 0;
+}
+
